@@ -24,11 +24,11 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 /**
- * Classe que representa a tela Meus Livros
+ * Classe que representa a tela Meus Filmes
  * 
- * @author Paulo Jr. e Julio Alves
+ * @author Julio Alves e Paulo Jr.
  */
-public class TelaMeusLivros {
+public class TelaMeusFilmes {
 
     // referência para a tela principal
     private final TelaPrincipal telaPrincipal;
@@ -39,30 +39,30 @@ public class TelaMeusLivros {
     private JDialog janela;
     private GridBagLayout layout;
     private GridBagConstraints gbc;
-    private JButton btnNovoLivro;
-    private JButton btnEditarLivro;
-    private JButton btnDeletarLivro;
-    private JButton btnSalvarLivro;
+    private JButton btnNovoFilme;
+    private JButton btnEditarFilme;
+    private JButton btnDeletarFilme;
+    private JButton btnSalvarFilme;
     private JButton btnCancelar;
-    private JTable tbLivros;
-    private JLabel lbTitulo;
-    private JLabel lbAutores;
+    private JTable tbFilmes;
+    private JLabel lbNomes;
+    private JLabel lbGeneros;
     private JLabel lbAno;
-    private JLabel lbNumPaginas;
+    private JLabel lbDuracao;
     private JLabel lbDescricao;
-    private JTextField txtTitulo;
-    private JTextField txtAutores;
+    private JTextField txtNome;
+    private JTextField txtGenero;
     private JTextField txtAno;
-    private JTextField txtNumPaginas;
+    private JTextField txtDuracao;
     private JTextArea taDescricao;
 
      /**
-     * Constrói a tela de autenticação guardando a referência da tela principal
+     * Constrói a tela Meus Filmes guardando a referência da tela principal
      * e criando o gerenciador de usuários.
      * 
      * @param telaPrincipal Referência da tela principal.
      */
-    public TelaMeusLivros(TelaPrincipal telaPrincipal) {
+    public TelaMeusFilmes(TelaPrincipal telaPrincipal) {
         this.gerenciadorUsuarios = new GerenciadorUsuarios();
         this.telaPrincipal = telaPrincipal;
     }
@@ -82,19 +82,19 @@ public class TelaMeusLivros {
      */
     private void construirTabela() {
         Object[] titulosColunas = {
-            I18N.obterColunaTituloLivro(),
-            I18N.obterColunaAutoresLivro()
+            I18N.obterColunaTituloFilme(),
+            I18N.obterColunaGeneroFilme()
         };
 
         // Dados "fake"
         Object[][] dados = {
-            {"O dia do Curinga", "Jostein Gaarder"},
-            {"Java: como programar", "Deitel, Paul & Deitel, Harvey"}
+            {"Gravidade", "Ficção Científica"},
+            {"Shrek", "Animação"}
         };
 
-        tbLivros = new JTable(dados, titulosColunas);
-        tbLivros.setPreferredScrollableViewportSize(new Dimension(500, 70));
-        tbLivros.setFillsViewportHeight(true);
+        tbFilmes = new JTable(dados, titulosColunas);
+        tbFilmes.setPreferredScrollableViewportSize(new Dimension(500, 70));
+        tbFilmes.setFillsViewportHeight(true);
     }
 
     /**
@@ -118,87 +118,87 @@ public class TelaMeusLivros {
      * Trata o estado inicial da tela
      */
     private void prepararComponentesEstadoInicial() {
-        tbLivros.clearSelection();
-        tbLivros.setEnabled(true);
+        tbFilmes.clearSelection();
+        tbFilmes.setEnabled(true);
 
-        txtTitulo.setText("");
-        txtAutores.setText("");
+        txtNome.setText("");
+        txtGenero.setText("");
         txtAno.setText("");
-        txtNumPaginas.setText("");
+        txtDuracao.setText("");
         taDescricao.setText("");
 
-        txtTitulo.setEditable(false);
-        txtAutores.setEditable(false);
+        txtNome.setEditable(false);
+        txtGenero.setEditable(false);
         txtAno.setEditable(false);
-        txtNumPaginas.setEditable(false);
+        txtDuracao.setEditable(false);
         taDescricao.setEditable(false);
 
-        btnNovoLivro.setEnabled(true);
-        btnEditarLivro.setEnabled(false);
-        btnSalvarLivro.setEnabled(false);
-        btnDeletarLivro.setEnabled(false);
+        btnNovoFilme.setEnabled(true);
+        btnEditarFilme.setEnabled(false);
+        btnSalvarFilme.setEnabled(false);
+        btnDeletarFilme.setEnabled(false);
         btnCancelar.setEnabled(true);
     }
 
     /**
-     * Trata o estado da tela para seleção de livros
+     * Trata o estado da tela para seleção de filmes
      */
-    private void prepararComponentesEstadoSelecaoLivro() {
-        txtTitulo.setEditable(false);
-        txtAutores.setEditable(false);
+    private void prepararComponentesEstadoSelecaoFilme() {
+        txtNome.setEditable(false);
+        txtGenero.setEditable(false);
         txtAno.setEditable(false);
-        txtNumPaginas.setEditable(false);
+        txtDuracao.setEditable(false);
         taDescricao.setEditable(false);
 
-        btnNovoLivro.setEnabled(true);
-        btnEditarLivro.setEnabled(true);
-        btnSalvarLivro.setEnabled(false);
-        btnDeletarLivro.setEnabled(true);
+        btnNovoFilme.setEnabled(true);
+        btnEditarFilme.setEnabled(true);
+        btnSalvarFilme.setEnabled(false);
+        btnDeletarFilme.setEnabled(true);
         btnCancelar.setEnabled(true);
     }
 
     /**
-     * Trata o estado da tela para cadastro de novo livro
+     * Trata o estado da tela para cadastro de novo filme
      */
-    private void prepararComponentesEstadoNovoLivro() {
-        tbLivros.clearSelection();
-        tbLivros.setEnabled(false);
+    private void prepararComponentesEstadoNovoFilme() {
+        tbFilmes.clearSelection();
+        tbFilmes.setEnabled(false);
 
-        txtTitulo.setText("");
-        txtAutores.setText("");
+        txtNome.setText("");
+        txtGenero.setText("");
         txtAno.setText("");
-        txtNumPaginas.setText("");
+        txtDuracao.setText("");
         taDescricao.setText("");
 
-        txtTitulo.setEditable(true);
-        txtAutores.setEditable(true);
+        txtNome.setEditable(true);
+        txtGenero.setEditable(true);
         txtAno.setEditable(true);
-        txtNumPaginas.setEditable(true);
+        txtDuracao.setEditable(true);
         taDescricao.setEditable(true);
 
-        btnNovoLivro.setEnabled(false);
-        btnEditarLivro.setEnabled(false);
-        btnSalvarLivro.setEnabled(true);
-        btnDeletarLivro.setEnabled(false);
+        btnNovoFilme.setEnabled(false);
+        btnEditarFilme.setEnabled(false);
+        btnSalvarFilme.setEnabled(true);
+        btnDeletarFilme.setEnabled(false);
         btnCancelar.setEnabled(true);
     }
 
     /**
-     * Trata o estado da tela para cadastro livro editado
+     * Trata o estado da tela para cadastro filme editado
      */
-    private void prepararComponentesEstadoEditouLivro() {
-        tbLivros.setEnabled(false);
+    private void prepararComponentesEstadoEditouFilme() {
+        tbFilmes.setEnabled(false);
 
-        txtTitulo.setEditable(true);
-        txtAutores.setEditable(true);
+        txtNome.setEditable(true);
+        txtGenero.setEditable(true);
         txtAno.setEditable(true);
-        txtNumPaginas.setEditable(true);
+        txtDuracao.setEditable(true);
         taDescricao.setEditable(true);
 
-        btnNovoLivro.setEnabled(false);
-        btnEditarLivro.setEnabled(false);
-        btnSalvarLivro.setEnabled(true);
-        btnDeletarLivro.setEnabled(false);
+        btnNovoFilme.setEnabled(false);
+        btnEditarFilme.setEnabled(false);
+        btnSalvarFilme.setEnabled(true);
+        btnDeletarFilme.setEnabled(false);
         btnCancelar.setEnabled(true);
     }
 
@@ -207,39 +207,39 @@ public class TelaMeusLivros {
      */
     private void adicionarComponentes() {
         construirTabela();
-        JScrollPane scrollPaneTabela = new JScrollPane(tbLivros);
+        JScrollPane scrollPaneTabela = new JScrollPane(tbFilmes);
         adicionarComponente(scrollPaneTabela,
                 GridBagConstraints.CENTER,
                 GridBagConstraints.NONE,
                 0, 0, 4, 1);
 
-        lbTitulo = new JLabel(I18N.obterRotuloLivroTitulo());
-        adicionarComponente(lbTitulo,
+        lbNomes = new JLabel(I18N.obterRotuloFilmeNome());
+        adicionarComponente(lbNomes,
                 GridBagConstraints.LINE_END,
                 GridBagConstraints.NONE,
                 1, 0, 1, 1);
 
-        txtTitulo = new JTextField(25);
-        txtTitulo.setEditable(false);
-        adicionarComponente(txtTitulo,
+        txtNome = new JTextField(25);
+        txtNome.setEditable(false);
+        adicionarComponente(txtNome,
                 GridBagConstraints.LINE_START,
                 GridBagConstraints.HORIZONTAL,
                 1, 1, 3, 1);
 
-        lbAutores = new JLabel(I18N.obterRotuloLivroAutores());
-        adicionarComponente(lbAutores,
+        lbGeneros = new JLabel(I18N.obterRotuloFilmeGenero());
+        adicionarComponente(lbGeneros,
                 GridBagConstraints.LINE_END,
                 GridBagConstraints.NONE,
                 2, 0, 1, 1);
 
-        txtAutores = new JTextField(25);
-        txtAutores.setEditable(false);
-        adicionarComponente(txtAutores,
+        txtGenero = new JTextField(25);
+        txtGenero.setEditable(false);
+        adicionarComponente(txtGenero,
                 GridBagConstraints.LINE_START,
                 GridBagConstraints.HORIZONTAL,
                 2, 1, 3, 1);
 
-        lbAno = new JLabel(I18N.obterRotuloLivroAno());
+        lbAno = new JLabel(I18N.obterRotuloFilmeAno());
         adicionarComponente(lbAno,
                 GridBagConstraints.LINE_END,
                 GridBagConstraints.NONE,
@@ -252,20 +252,20 @@ public class TelaMeusLivros {
                 GridBagConstraints.HORIZONTAL,
                 3, 1, 1, 1);
 
-        lbNumPaginas = new JLabel(I18N.obterRotuloLivroNroPaginas());
-        adicionarComponente(lbNumPaginas,
+        lbDuracao = new JLabel(I18N.obterRotuloFilmeDuracao());
+        adicionarComponente(lbDuracao,
                 GridBagConstraints.LINE_END,
                 GridBagConstraints.NONE,
                 3, 2, 1, 1);
 
-        txtNumPaginas = new JTextField(8);
-        txtNumPaginas.setEditable(false);
-        adicionarComponente(txtNumPaginas,
+        txtDuracao = new JTextField(8);
+        txtDuracao.setEditable(false);
+        adicionarComponente(txtDuracao,
                 GridBagConstraints.LINE_START,
                 GridBagConstraints.HORIZONTAL,
                 3, 3, 1, 1);
 
-        lbDescricao = new JLabel(I18N.obterRotuloLivroDescricao());
+        lbDescricao = new JLabel(I18N.obterRotuloFilmeDescricao());
         adicionarComponente(lbDescricao,
                 GridBagConstraints.LINE_END,
                 GridBagConstraints.NONE,
@@ -280,16 +280,16 @@ public class TelaMeusLivros {
                 GridBagConstraints.HORIZONTAL,
                 4, 1, 3, 1);
 
-        btnNovoLivro = new JButton(I18N.obterBotaoNovo(),
+        btnNovoFilme = new JButton(I18N.obterBotaoNovo(),
                 GerenciadorDeImagens.NOVO);
 
-        btnEditarLivro = new JButton(I18N.obterBotaoEditar(),
+        btnEditarFilme = new JButton(I18N.obterBotaoEditar(),
                 GerenciadorDeImagens.EDITAR);
 
-        btnSalvarLivro = new JButton(I18N.obterBotaoSalvar(),
+        btnSalvarFilme = new JButton(I18N.obterBotaoSalvar(),
                 GerenciadorDeImagens.OK);
 
-        btnDeletarLivro = new JButton(I18N.obterBotaoDeletar(),
+        btnDeletarFilme = new JButton(I18N.obterBotaoDeletar(),
                 GerenciadorDeImagens.DELETAR);
 
         btnCancelar = new JButton(I18N.obterBotaoCancelar(),
@@ -298,10 +298,10 @@ public class TelaMeusLivros {
         prepararComponentesEstadoInicial();
 
         JPanel painelBotoes = new JPanel();
-        painelBotoes.add(btnNovoLivro);
-        painelBotoes.add(btnEditarLivro);
-        painelBotoes.add(btnSalvarLivro);
-        painelBotoes.add(btnDeletarLivro);
+        painelBotoes.add(btnNovoFilme);
+        painelBotoes.add(btnEditarFilme);
+        painelBotoes.add(btnSalvarFilme);
+        painelBotoes.add(btnDeletarFilme);
         painelBotoes.add(btnCancelar);
 
         adicionarComponente(painelBotoes,
@@ -311,15 +311,15 @@ public class TelaMeusLivros {
     }
 
     /**
-     * Trata a selação de livros na grade.
+     * Trata a selação de filmes na grade.
      */
-    private void selecionouLivro() {
+    private void selecionouFilme() {
         // Dados "fake"
-        String texto = String.format("Linha selecionada: %d", tbLivros.getSelectedRow());
-        txtTitulo.setText(texto);
-        txtAutores.setText(texto);
+        String texto = String.format("Linha selecionada: %d", tbFilmes.getSelectedRow());
+        txtNome.setText(texto);
+        txtGenero.setText(texto);
         txtAno.setText(texto);
-        txtNumPaginas.setText(texto);
+        txtDuracao.setText(texto);
         taDescricao.setText(texto);
     }
 
@@ -334,40 +334,40 @@ public class TelaMeusLivros {
             }
         });
 
-        tbLivros.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+        tbFilmes.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                prepararComponentesEstadoSelecaoLivro();
-                selecionouLivro();
+                prepararComponentesEstadoSelecaoFilme();
+                selecionouFilme();
             }
         });
 
-        btnEditarLivro.addActionListener(new ActionListener() {
+        btnEditarFilme.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                prepararComponentesEstadoEditouLivro();
+                prepararComponentesEstadoEditouFilme();
             }
         });
 
-        btnSalvarLivro.addActionListener(new ActionListener() {
+        btnSalvarFilme.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 prepararComponentesEstadoInicial();
             }
         });
 
-        btnNovoLivro.addActionListener(new ActionListener() {
+        btnNovoFilme.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                prepararComponentesEstadoNovoLivro();
+                prepararComponentesEstadoNovoFilme();
             }
         });
 
-        btnDeletarLivro.addActionListener(new ActionListener() {
+        btnDeletarFilme.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (Utilidades.msgConfirmacao(I18N.obterConfirmacaoDeletar())) {
-                    // Remover livro!
+                    // Remover filme!
                 }
             }
         });
@@ -378,7 +378,7 @@ public class TelaMeusLivros {
      */
     private void construirTela() {
         janela = new JDialog();
-        janela.setTitle(I18N.obterTituloTelaMeusLivros());
+        janela.setTitle(I18N.obterTituloTelaMeusFilmes());
         layout = new GridBagLayout();
         gbc = new GridBagConstraints();
         janela.setLayout(layout);

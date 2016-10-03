@@ -66,12 +66,12 @@ public class I18N {
     }
 
     /**
-     * Retorna o texto do menu Meus Livros.
+     * Retorna o texto do menu Meus Filmes.
      * 
-     * @return Texto do menu Meus Livros.
+     * @return Texto do menu Meus Filmes.
      */
-    public static String obterMenuMeusLivros() {
-        return rb.getString("menu.inicio.meus_livros");
+    public static String obterMenuMeusFilmes() {
+        return rb.getString("menu.inicio.meus_filmes");
     }
 
     /**
@@ -265,16 +265,7 @@ public class I18N {
      */
     public static String obterTituloTelaPrincipal() {
         return obterNomeDoSistema();
-    }
-
-    /**
-     * Retorna o título da tela de Meus Livros.
-     * 
-     * @return Título da tela de Meus Livros.
-     */
-    public static String obterTituloTelaMeusLivros() {
-        return rb.getString("tela.meuslivros.titulo");
-    }
+    }    
 
     /**
      * Retorna o título da tela de Cadastro de Usuários. 
@@ -358,60 +349,6 @@ public class I18N {
     }
 
     /**
-     * Retorna o texto do rótulo nome do usuário.
-     * 
-     * @return Texto do rótulo nome do usuário.
-     */
-    public static String obterRotuloUsuarioNome() {
-        return rb.getString("rotulo.usuario.nome");
-    }
-
-    /**
-     * Retorna o texto do rótulo título do livro.
-     * 
-     * @return Texto do rótulo título do livro.
-     */
-    public static String obterRotuloLivroTitulo() {
-        return rb.getString("rotulo.livro.titulo");
-    }
-
-    /**
-     * Retorna o texto do rótulo autores do livro.
-     * 
-     * @return Texto do rótulo autores do livro.
-     */
-    public static String obterRotuloLivroAutores() {
-        return rb.getString("rotulo.livro.autores");
-    }
-
-    /**
-     * Retorna o texto do rótulo ano do livro.
-     * 
-     * @return Texto do rótulo ano do livro.
-     */
-    public static String obterRotuloLivroAno() {
-        return rb.getString("rotulo.livro.ano");
-    }
-
-    /**
-     * Retorna o texto do rótulo número de páginas do livro.
-     * 
-     * @return Texto do rótulo número de páginas do livro.
-     */
-    public static String obterRotuloLivroNroPaginas() {
-        return rb.getString("rotulo.livro.numpaginas");
-    }
-
-    /**
-     * Retorna o texto do rótulo descrição do livro.
-     * 
-     * @return Texto do rótulo descrição do livro.
-     */
-    public static String obterRotuloLivroDescricao() {
-        return rb.getString("rotulo.livro.descricao");
-    }
-
-    /**
      * Retorna o texto do rótulo confirmar senha do usuário.
      * 
      * @return Texto do rótulo confirmar senha do usuário.
@@ -421,21 +358,83 @@ public class I18N {
     }
     
     /**
-     * Retorna o título da coluna livro.
+     * Retorna o título da coluna filme.
      * 
-     * @return Título da coluna livro.
+     * @return Título da coluna filme.
      */
-    public static String obterColunaTituloLivro() {
-        return rb.getString("coluna.titulolivro");
+    public static Object obterColunaTituloFilme() {
+        return rb.getString("coluna.nomefilme");
     }
 
     /**
-     * Retorna o título da coluna autores do livro.
+     * Retorna o título da coluna gênero do filme.
      * 
-     * @return Título da coluna autores do livro.
+     * @return Título da coluna gênero do filme.
      */
-    public static String obterColunaAutoresLivro() {
-        return rb.getString("coluna.autoreslivro");
+    public static Object obterColunaGeneroFilme() {
+        return rb.getString("coluna.generofilme");
     }
 
+    /**
+     * Retorna o texto do rótulo nome do filme.
+     * 
+     * @return Texto do rótulo nome do filme.
+     */
+    public static String obterRotuloFilmeNome() {
+        return rb.getString("rotulo.filme.nome");
+    }
+
+    /**
+     * Retorna o texto do rótulo gênero do filme.
+     * 
+     * @return Texto do rótulo gênero do filme.
+     */
+    public static String obterRotuloFilmeGenero() {
+        return rb.getString("rotulo.filme.genero");
+    }
+
+    /**
+     * Retorna o texto do rótulo ano do filme.
+     * 
+     * @return Texto do rótulo ano do filme.
+     */
+    public static String obterRotuloFilmeAno() {
+        return rb.getString("rotulo.filme.ano");
+    }
+
+    /**
+     * Retorna o texto do rótulo da duração do filme.
+     * 
+     * @return Texto do rótulo da duração do filme.
+     */
+    public static String obterRotuloFilmeDuracao() {
+        
+        return rb.getString("rotulo.filme.duracao");
+    }
+
+    /**
+     * Retorna o texto do rótulo descrição do filme.
+     * 
+     * @return Texto do rótulo descrição do filme.
+     */
+    public static String obterRotuloFilmeDescricao() {
+        return rb.getString("rotulo.filme.descricao");
+    }
+    /**
+     * Retorna o título da tela de Meus Filmes.
+     * 
+     * @return Título da tela de Meus Filmes.
+     */
+    public static String obterTituloTelaMeusFilmes() {
+        return rb.getString("tela.meusfilmes.titulo");
+    }
+
+        /**
+     * Retorna o texto do rótulo nome do usuário.
+     * 
+     * @return Texto do rótulo nome do usuário.
+     */
+    public static String obterRotuloUsuarioNome() {
+        return rb.getString("rotulo.usuario.nome");
+    }
 }

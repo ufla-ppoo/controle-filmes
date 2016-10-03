@@ -25,8 +25,8 @@ public class TelaPrincipal {
     private final TelaAutenticacao telaAutenticacao;
     // tela de cadastro de usuário
     private final TelaCadastroUsuario telaCadastroUsuario;
-    // tela de gestão dos livros
-    private final TelaMeusLivros telaMeusLivros;
+    // tela de gestão dos filmes
+    private final TelaMeusFilmes telaMeusFilmes;
 
     // janela da tela principal
     private JFrame janela;
@@ -47,7 +47,7 @@ public class TelaPrincipal {
 
     // Itens de menu específicos para usuários logados no sistema    
     private JMenuItem menuLogout;
-    private JMenuItem menuMeusLivros;
+    private JMenuItem menuMeusFilmes;
 
     /**
      * Construtor; incializa as demais telas e sessão de usuário.
@@ -55,7 +55,7 @@ public class TelaPrincipal {
     public TelaPrincipal() {
         telaAutenticacao = new TelaAutenticacao(this);
         telaCadastroUsuario = new TelaCadastroUsuario(this);
-        telaMeusLivros = new TelaMeusLivros(this);
+        telaMeusFilmes = new TelaMeusFilmes(this);
         sessaoUsuario = SessaoUsuario.obterInstancia();
     }
 
@@ -117,10 +117,10 @@ public class TelaPrincipal {
             }
         });
 
-        menuMeusLivros.addActionListener(new ActionListener() {
+        menuMeusFilmes.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                telaMeusLivros.inicializar();
+                telaMeusFilmes.inicializar();
             }
         });
 
@@ -157,13 +157,13 @@ public class TelaPrincipal {
         menuEntrar = new JMenuItem(I18N.obterMenuEntrar(), GerenciadorDeImagens.ENTRAR);
         menuCadastrarUsuario = new JMenuItem(I18N.obterMenuCadastrarUsuario(), GerenciadorDeImagens.CADASTRAR_USUARIO);
         menuLogout = new JMenuItem(I18N.obterMenuLogout(), GerenciadorDeImagens.LOGOUT);
-        menuMeusLivros = new JMenuItem(I18N.obterMenuMeusLivros(), GerenciadorDeImagens.MEUS_LIVROS);
+        menuMeusFilmes = new JMenuItem(I18N.obterMenuMeusFilmes(), GerenciadorDeImagens.MEUS_FILMES);
 
         if (!sessaoUsuario.estahLogado()) {
             menuInicio.add(menuEntrar);
             menuInicio.add(menuCadastrarUsuario);
         } else {
-            menuInicio.add(menuMeusLivros);
+            menuInicio.add(menuMeusFilmes);
             menuInicio.add(menuLogout);
         }
 
