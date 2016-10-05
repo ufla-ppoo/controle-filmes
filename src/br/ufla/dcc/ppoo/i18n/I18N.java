@@ -21,8 +21,9 @@ public class I18N {
 
     /**
      * Altera a localidade a ser utilizada.
-     * 
-     * @param localidade Nova localidade a ser utilizada (Português - Brasil é a padrão)
+     *
+     * @param localidade Nova localidade a ser utilizada (Português - Brasil é a
+     * padrão)
      */
     public static void alterarLocalidade(Locale localidade) {
         Locale.setDefault(localidade);
@@ -31,7 +32,7 @@ public class I18N {
 
     /**
      * Retorna o nome do sistema.
-     * 
+     *
      * @return Nome do sistema.
      */
     public static String obterNomeDoSistema() {
@@ -40,7 +41,7 @@ public class I18N {
 
     /**
      * Retorna o texto do menu Início.
-     * 
+     *
      * @return Texto do menu Início.
      */
     public static String obterMenuInicio() {
@@ -49,7 +50,7 @@ public class I18N {
 
     /**
      * Retorna o mnemônico do menu Início.
-     * 
+     *
      * @return Mnemônico do menu Início.
      */
     public static char obterMnemonicoMenuInicio() {
@@ -58,7 +59,7 @@ public class I18N {
 
     /**
      * Retorna o texto do menu Entrar.
-     * 
+     *
      * @return Texto do menu Entrar.
      */
     public static String obterMenuEntrar() {
@@ -67,7 +68,7 @@ public class I18N {
 
     /**
      * Retorna o texto do menu Meus Filmes.
-     * 
+     *
      * @return Texto do menu Meus Filmes.
      */
     public static String obterMenuMeusFilmes() {
@@ -76,7 +77,7 @@ public class I18N {
 
     /**
      * Retorna o texto do menu Cadastrar Usuário.
-     * 
+     *
      * @return Texto do menu Cadastrar Usuário.
      */
     public static String obterMenuCadastrarUsuario() {
@@ -85,7 +86,7 @@ public class I18N {
 
     /**
      * Retorna o texto do menu Sair.
-     * 
+     *
      * @return Texto do menu Sair.
      */
     public static String obterMenuSair() {
@@ -94,7 +95,7 @@ public class I18N {
 
     /**
      * Retorna o texto do menu Logout.
-     * 
+     *
      * @return Texto do menu Logout.
      */
     public static String obterMenuLogout() {
@@ -103,7 +104,7 @@ public class I18N {
 
     /**
      * Retorna o texto do menu Idioma.
-     * 
+     *
      * @return Texto do menu Idioma.
      */
     public static String obterMenuIdioma() {
@@ -112,29 +113,34 @@ public class I18N {
 
     /**
      * Retorna o mnemônico do menu Idioma.
-     * 
+     *
      * @return Mnemônico do menu Idioma.
-     */    
+     */
     public static char obterMnemonicoMenuIdioma() {
         return rb.getString("mnemonico.menu.idioma").charAt(0);
     }
 
     /**
      * Retorna o texto do menu Idioma Português.
-     * 
+     *
      * @return Texto do menu Idioma Português.
      */
     public static String obterMenuIdiomaPortugues() {
         return rb.getString("menu.idioma.pt_br");
     }
 
+    /**
+     * Retorna o texto do menu Idioma Inglês.
+     *
+     * @return Texto do menu Idioma Inglês.
+     */
     public static String obterMenuIdiomaIngles() {
         return rb.getString("menu.idioma.en_us");
     }
 
     /**
      * Retorna o texto do menu Ajuda.
-     * 
+     *
      * @return Texto do menu Ajuda.
      */
     public static String obterMenuAjuda() {
@@ -143,7 +149,7 @@ public class I18N {
 
     /**
      * Retorna o mnemônico do menu Ajuda.
-     * 
+     *
      * @return Mnemônico do menu Ajuda.
      */
     public static char obterMnemonicoMenuAjuda() {
@@ -152,7 +158,7 @@ public class I18N {
 
     /**
      * Retorna o texto do menu Sobre.
-     * 
+     *
      * @return Texto do menu Sobre.
      */
     public static String obterMenuSobre() {
@@ -161,7 +167,7 @@ public class I18N {
 
     /**
      * Retorna o texto da mensagem de confirmação de saída do sistema.
-     * 
+     *
      * @return Texto da mensagem de confirmação de saída do sistema.
      */
     public static String obterConfirmacaoSaida() {
@@ -170,7 +176,7 @@ public class I18N {
 
     /**
      * Retorna o texto da mensagem de confirmação ao deletar.
-     * 
+     *
      * @return Texto da mensagem de confirmação ao deletar.
      */
     public static String obterConfirmacaoDeletar() {
@@ -179,7 +185,7 @@ public class I18N {
 
     /**
      * Retorna o texto da mensagem de erro de autencicação
-     * 
+     *
      * @return Texto da mensagem de erro de autencicação
      */
     public static String obterErroAutenticacao() {
@@ -188,7 +194,7 @@ public class I18N {
 
     /**
      * Retorna o texto da mensagem de usuário já cadastrado.
-     * 
+     *
      * @return Texto da mensagem de usuário já cadastrado.
      */
     public static String obterErroUsuarioJaCadastrado() {
@@ -197,7 +203,7 @@ public class I18N {
 
     /**
      * Retorna o texto da mensagem de senhas não conferem.
-     * 
+     *
      * @return Texto da mensagem de senhas não conferem.
      */
     public static String obterErroSenhasNaoConferem() {
@@ -206,7 +212,7 @@ public class I18N {
 
     /**
      * Retorna o texto da mensagem de cadastro de usuário efetuado com sucesso.
-     * 
+     *
      * @return Texto da mensagem de cadastro de usuário efetuado com sucesso.
      */
     public static String obterSucessoCadastroUsuario() {
@@ -215,7 +221,7 @@ public class I18N {
 
     /**
      * Retorna o título da mensagem de confirmação.
-     * 
+     *
      * @return Título da mensagem de confirmação.
      */
     public static String obterTituloMensagemConfirmacao() {
@@ -224,7 +230,7 @@ public class I18N {
 
     /**
      * Retorna o texto da mensagem Sobre.
-     * 
+     *
      * @return Texto da mensagem Sobre.
      */
     public static String obterMensagemSobre() {
@@ -233,7 +239,7 @@ public class I18N {
 
     /**
      * Retorna o título da mensagem de informação.
-     * 
+     *
      * @return Título da mensagem de informação.
      */
     public static String obterTituloMensagemInformacao() {
@@ -242,7 +248,7 @@ public class I18N {
 
     /**
      * Retorna o título da mensagem de erro.
-     * 
+     *
      * @return Título da mensagem de erro.
      */
     public static String obterTituloMensagemErro() {
@@ -251,7 +257,7 @@ public class I18N {
 
     /**
      * Retorna o título da tela de autenticação.
-     * 
+     *
      * @return Título da tela de autenticação.
      */
     public static String obterTituloTelaAutenticacao() {
@@ -260,16 +266,16 @@ public class I18N {
 
     /**
      * Retorna o título da tela de principal.
-     * 
+     *
      * @return Título da tela de principal.
      */
     public static String obterTituloTelaPrincipal() {
         return obterNomeDoSistema();
-    }    
+    }
 
     /**
-     * Retorna o título da tela de Cadastro de Usuários. 
-     * 
+     * Retorna o título da tela de Cadastro de Usuários.
+     *
      * @return Título da tela de Cadastro de Usuários.
      */
     public static String obterTituloTelaCadastrarUsuario() {
@@ -278,7 +284,7 @@ public class I18N {
 
     /**
      * Retorna o texto do rótulo login do usuário.
-     * 
+     *
      * @return Texto do rótulo login do usuário.
      */
     public static String obterRotuloUsuarioLogin() {
@@ -287,7 +293,7 @@ public class I18N {
 
     /**
      * Retorna o texto do rótulo senha do usuário.
-     * 
+     *
      * @return Texto do rótulo senha do usuário.
      */
     public static String obterRotuloUsuarioSenha() {
@@ -296,8 +302,8 @@ public class I18N {
 
     /**
      * Retorna o texto do botão Entrar (logar).
-     * 
-     * @return Texto do botão Entrar (logar). 
+     *
+     * @return Texto do botão Entrar (logar).
      */
     public static String obterBotaoEntrar() {
         return rb.getString("botao.entrar");
@@ -305,7 +311,7 @@ public class I18N {
 
     /**
      * Retorna o texto do botão Cancelar.
-     * 
+     *
      * @return Texto do botão Cancelar.
      */
     public static String obterBotaoCancelar() {
@@ -314,7 +320,7 @@ public class I18N {
 
     /**
      * Retorna o texto do botão Salvar.
-     * 
+     *
      * @return Texto do botão Salvar.
      */
     public static String obterBotaoSalvar() {
@@ -323,7 +329,7 @@ public class I18N {
 
     /**
      * Retorna o texto do botão Novo.
-     * 
+     *
      * @return Texto do botão Novo.
      */
     public static String obterBotaoNovo() {
@@ -332,7 +338,7 @@ public class I18N {
 
     /**
      * Retorna o texto do botão Editar.
-     * 
+     *
      * @return Texto do botão Editar.
      */
     public static String obterBotaoEditar() {
@@ -341,7 +347,7 @@ public class I18N {
 
     /**
      * Retorna o texto do botão Excluir (deletar).
-     * 
+     *
      * @return Texto do botão Excluir (deletar).
      */
     public static String obterBotaoDeletar() {
@@ -350,34 +356,16 @@ public class I18N {
 
     /**
      * Retorna o texto do rótulo confirmar senha do usuário.
-     * 
+     *
      * @return Texto do rótulo confirmar senha do usuário.
      */
     public static String obterRotuloUsuarioConfirmarSenha() {
         return rb.getString("rotulo.usuario.confirmar_senha");
     }
-    
-    /**
-     * Retorna o título da coluna filme.
-     * 
-     * @return Título da coluna filme.
-     */
-    public static Object obterColunaTituloFilme() {
-        return rb.getString("coluna.nomefilme");
-    }
-
-    /**
-     * Retorna o título da coluna gênero do filme.
-     * 
-     * @return Título da coluna gênero do filme.
-     */
-    public static Object obterColunaGeneroFilme() {
-        return rb.getString("coluna.generofilme");
-    }
 
     /**
      * Retorna o texto do rótulo nome do filme.
-     * 
+     *
      * @return Texto do rótulo nome do filme.
      */
     public static String obterRotuloFilmeNome() {
@@ -386,7 +374,7 @@ public class I18N {
 
     /**
      * Retorna o texto do rótulo gênero do filme.
-     * 
+     *
      * @return Texto do rótulo gênero do filme.
      */
     public static String obterRotuloFilmeGenero() {
@@ -395,7 +383,7 @@ public class I18N {
 
     /**
      * Retorna o texto do rótulo ano do filme.
-     * 
+     *
      * @return Texto do rótulo ano do filme.
      */
     public static String obterRotuloFilmeAno() {
@@ -404,34 +392,35 @@ public class I18N {
 
     /**
      * Retorna o texto do rótulo da duração do filme.
-     * 
+     *
      * @return Texto do rótulo da duração do filme.
      */
     public static String obterRotuloFilmeDuracao() {
-        
+
         return rb.getString("rotulo.filme.duracao");
     }
 
     /**
      * Retorna o texto do rótulo descrição do filme.
-     * 
+     *
      * @return Texto do rótulo descrição do filme.
      */
     public static String obterRotuloFilmeDescricao() {
         return rb.getString("rotulo.filme.descricao");
     }
+
     /**
      * Retorna o título da tela de Meus Filmes.
-     * 
+     *
      * @return Título da tela de Meus Filmes.
      */
     public static String obterTituloTelaMeusFilmes() {
         return rb.getString("tela.meusfilmes.titulo");
     }
 
-        /**
+    /**
      * Retorna o texto do rótulo nome do usuário.
-     * 
+     *
      * @return Texto do rótulo nome do usuário.
      */
     public static String obterRotuloUsuarioNome() {

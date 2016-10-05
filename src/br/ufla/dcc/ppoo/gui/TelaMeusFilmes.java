@@ -2,7 +2,6 @@ package br.ufla.dcc.ppoo.gui;
 
 import br.ufla.dcc.ppoo.i18n.I18N;
 import br.ufla.dcc.ppoo.imagens.GerenciadorDeImagens;
-import br.ufla.dcc.ppoo.servicos.GerenciadorUsuarios;
 import br.ufla.dcc.ppoo.util.Utilidades;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -32,8 +31,6 @@ public class TelaMeusFilmes {
 
     // referência para a tela principal
     private final TelaPrincipal telaPrincipal;
-    // referência para o gerenciador de usuários
-    private final GerenciadorUsuarios gerenciadorUsuarios;
             
     // componentes da tela
     private JDialog janela;
@@ -57,13 +54,11 @@ public class TelaMeusFilmes {
     private JTextArea taDescricao;
 
      /**
-     * Constrói a tela Meus Filmes guardando a referência da tela principal
-     * e criando o gerenciador de usuários.
+     * Constrói a tela Meus Filmes guardando a referência da tela principal.
      * 
      * @param telaPrincipal Referência da tela principal.
      */
     public TelaMeusFilmes(TelaPrincipal telaPrincipal) {
-        this.gerenciadorUsuarios = new GerenciadorUsuarios();
         this.telaPrincipal = telaPrincipal;
     }
 
@@ -82,8 +77,8 @@ public class TelaMeusFilmes {
      */
     private void construirTabela() {
         Object[] titulosColunas = {
-            I18N.obterColunaTituloFilme(),
-            I18N.obterColunaGeneroFilme()
+            I18N.obterRotuloFilmeNome(),
+            I18N.obterRotuloFilmeGenero()
         };
 
         // Dados "fake"
