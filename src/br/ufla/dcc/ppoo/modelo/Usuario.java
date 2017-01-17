@@ -1,3 +1,13 @@
+/**
+*	MANUTENCAO DO SISTEMA REALIZADA POR:
+*	Valdeci Soares da Silva Junior
+*                       &
+*        Arlen Mendes
+*	Site: conexusecia.com.br
+*	Contato: (35) 9_9195-8111 - Tim + Whatsapp
+*	E-mail: contato@conexusecia.com.br
+*/
+
 package br.ufla.dcc.ppoo.modelo;
 
 import java.util.Arrays;

@@ -1,7 +1,19 @@
+/**
+*	MANUTENCAO DO SISTEMA REALIZADA POR:
+*	Valdeci Soares da Silva Junior
+*                       &
+*        Arlen Mendes
+*	Site: conexusecia.com.br
+*	Contato: (35) 9_9195-8111 - Tim + Whatsapp
+*	E-mail: contato@conexusecia.com.br
+*/
+
 package br.ufla.dcc.ppoo.gui;
 
 import br.ufla.dcc.ppoo.i18n.I18N;
 import br.ufla.dcc.ppoo.imagens.GerenciadorDeImagens;
+import br.ufla.dcc.ppoo.modelo.Filme;
+import br.ufla.dcc.ppoo.servicos.GerenciadorFilmes;
 import br.ufla.dcc.ppoo.util.Utilidades;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -23,43 +35,47 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 /**
- * Classe que representa a tela Meus Filmes
- * 
- * @author Julio Alves e Paulo Jr.
+ * Classe que representa a tela Minhas Séries
+ *
+ * @author Paulo Jr. e Julio Alves
  */
 public class TelaMeusFilmes {
 
     // referência para a tela principal
     private final TelaPrincipal telaPrincipal;
-            
+
     // componentes da tela
+    private int opsalve=0;
     private JDialog janela;
     private GridBagLayout layout;
     private GridBagConstraints gbc;
-    private JButton btnNovoFilme;
+    private JButton btnNovaFilme;
     private JButton btnEditarFilme;
     private JButton btnDeletarFilme;
     private JButton btnSalvarFilme;
     private JButton btnCancelar;
     private JTable tbFilmes;
-    private JLabel lbNomes;
-    private JLabel lbGeneros;
+    private JLabel lbTitulo;
+    private JLabel lbNumTemporadas;
     private JLabel lbAno;
-    private JLabel lbDuracao;
-    private JLabel lbDescricao;
+    private JLabel lbGenero;
+    private JLabel lbElenco;
     private JTextField txtNome;
-    private JTextField txtGenero;
-    private JTextField txtAno;
     private JTextField txtDuracao;
-    private JTextArea taDescricao;
+    private JTextField txtAno;
+    private JTextField txtGenero;
+    private JTextArea txtDesccricao;
+    private final GerenciadorFilmes gerenciadorFilmes;
 
-     /**
-     * Constrói a tela Meus Filmes guardando a referência da tela principal.
-     * 
+
+    /**
+     * Constrói a tela de autenticação guardando a referência da tela principal.
+     *
      * @param telaPrincipal Referência da tela principal.
      */
     public TelaMeusFilmes(TelaPrincipal telaPrincipal) {
         this.telaPrincipal = telaPrincipal;
+        this.gerenciadorFilmes = new GerenciadorFilmes();
     }
 
     /**
@@ -70,6 +86,7 @@ public class TelaMeusFilmes {
         construirTela();
         configurarEventosTela();
         exibirTela();
+        
     }
 
     /**
@@ -81,11 +98,23 @@ public class TelaMeusFilmes {
             I18N.obterRotuloFilmeGenero()
         };
 
-        // Dados "fake"
+        
+        
+        
+              
+        Object[][] dados = new Object [gerenciadorFilmes.getListaFilme().size()][2];
+        
+        for (int i=0; i< gerenciadorFilmes.getListaFilme().size(); i++ ){
+         dados [i][0] = gerenciadorFilmes.getListaFilme().get(i).getNome();
+         dados[i][1] = gerenciadorFilmes.getListaFilme().get(i).getGenero();
+        }
+        
+        
+        /* Dados "fake"
         Object[][] dados = {
-            {"Gravidade", "Ficção Científica"},
-            {"Shrek", "Animação"}
-        };
+            {"The Big Bang Theory", "Sitcom"},
+            {"Game of Thrones", "Aventura, Drama, Épico, Fantasia"}
+        }; */
 
         tbFilmes = new JTable(dados, titulosColunas);
         tbFilmes.setPreferredScrollableViewportSize(new Dimension(500, 70));
@@ -117,18 +146,18 @@ public class TelaMeusFilmes {
         tbFilmes.setEnabled(true);
 
         txtNome.setText("");
-        txtGenero.setText("");
-        txtAno.setText("");
         txtDuracao.setText("");
-        taDescricao.setText("");
+        txtAno.setText("");
+        txtGenero.setText("");
+        txtDesccricao.setText("");
 
         txtNome.setEditable(false);
-        txtGenero.setEditable(false);
-        txtAno.setEditable(false);
         txtDuracao.setEditable(false);
-        taDescricao.setEditable(false);
+        txtAno.setEditable(false);
+        txtGenero.setEditable(false);
+        txtDesccricao.setEditable(false);
 
-        btnNovoFilme.setEnabled(true);
+        btnNovaFilme.setEnabled(true);
         btnEditarFilme.setEnabled(false);
         btnSalvarFilme.setEnabled(false);
         btnDeletarFilme.setEnabled(false);
@@ -136,16 +165,16 @@ public class TelaMeusFilmes {
     }
 
     /**
-     * Trata o estado da tela para seleção de filmes
+     * Trata o estado da tela para seleção de séries
      */
     private void prepararComponentesEstadoSelecaoFilme() {
         txtNome.setEditable(false);
-        txtGenero.setEditable(false);
-        txtAno.setEditable(false);
         txtDuracao.setEditable(false);
-        taDescricao.setEditable(false);
+        txtAno.setEditable(false);
+        txtGenero.setEditable(false);
+        txtDesccricao.setEditable(false);
 
-        btnNovoFilme.setEnabled(true);
+        btnNovaFilme.setEnabled(true);
         btnEditarFilme.setEnabled(true);
         btnSalvarFilme.setEnabled(false);
         btnDeletarFilme.setEnabled(true);
@@ -153,25 +182,25 @@ public class TelaMeusFilmes {
     }
 
     /**
-     * Trata o estado da tela para cadastro de novo filme
+     * Trata o estado da tela para cadastro de nova série
      */
-    private void prepararComponentesEstadoNovoFilme() {
+    private void prepararComponentesEstadoNovaFilme() {
         tbFilmes.clearSelection();
-        tbFilmes.setEnabled(false);
-
+        tbFilmes.setEnabled(true);
+        this.opsalve=1;
         txtNome.setText("");
-        txtGenero.setText("");
-        txtAno.setText("");
         txtDuracao.setText("");
-        taDescricao.setText("");
+        txtAno.setText("");
+        txtGenero.setText("");
+        txtDesccricao.setText("");
 
         txtNome.setEditable(true);
-        txtGenero.setEditable(true);
-        txtAno.setEditable(true);
         txtDuracao.setEditable(true);
-        taDescricao.setEditable(true);
+        txtAno.setEditable(true);
+        txtGenero.setEditable(true);
+        txtDesccricao.setEditable(true);
 
-        btnNovoFilme.setEnabled(false);
+        btnNovaFilme.setEnabled(false);
         btnEditarFilme.setEnabled(false);
         btnSalvarFilme.setEnabled(true);
         btnDeletarFilme.setEnabled(false);
@@ -179,18 +208,18 @@ public class TelaMeusFilmes {
     }
 
     /**
-     * Trata o estado da tela para cadastro filme editado
+     * Trata o estado da tela para cadastro série editada
      */
     private void prepararComponentesEstadoEditouFilme() {
         tbFilmes.setEnabled(false);
-
+        this.opsalve=2;
         txtNome.setEditable(true);
-        txtGenero.setEditable(true);
-        txtAno.setEditable(true);
         txtDuracao.setEditable(true);
-        taDescricao.setEditable(true);
+        txtAno.setEditable(true);
+        txtGenero.setEditable(true);
+        txtDesccricao.setEditable(true);
 
-        btnNovoFilme.setEnabled(false);
+        btnNovaFilme.setEnabled(false);
         btnEditarFilme.setEnabled(false);
         btnSalvarFilme.setEnabled(true);
         btnDeletarFilme.setEnabled(false);
@@ -208,8 +237,8 @@ public class TelaMeusFilmes {
                 GridBagConstraints.NONE,
                 0, 0, 4, 1);
 
-        lbNomes = new JLabel(I18N.obterRotuloFilmeNome());
-        adicionarComponente(lbNomes,
+        lbTitulo = new JLabel(I18N.obterRotuloFilmeNome());
+        adicionarComponente(lbTitulo,
                 GridBagConstraints.LINE_END,
                 GridBagConstraints.NONE,
                 1, 0, 1, 1);
@@ -220,8 +249,8 @@ public class TelaMeusFilmes {
                 GridBagConstraints.HORIZONTAL,
                 1, 1, 3, 1);
 
-        lbGeneros = new JLabel(I18N.obterRotuloFilmeGenero());
-        adicionarComponente(lbGeneros,
+        lbGenero = new JLabel(I18N.obterRotuloFilmeGenero());
+        adicionarComponente(lbGenero,
                 GridBagConstraints.LINE_END,
                 GridBagConstraints.NONE,
                 2, 0, 1, 1);
@@ -244,8 +273,8 @@ public class TelaMeusFilmes {
                 GridBagConstraints.HORIZONTAL,
                 3, 1, 1, 1);
 
-        lbDuracao = new JLabel(I18N.obterRotuloFilmeDuracao());
-        adicionarComponente(lbDuracao,
+        lbNumTemporadas = new JLabel(I18N.obterRotuloFilmeDuracao());
+        adicionarComponente(lbNumTemporadas,
                 GridBagConstraints.LINE_END,
                 GridBagConstraints.NONE,
                 3, 2, 1, 1);
@@ -256,21 +285,21 @@ public class TelaMeusFilmes {
                 GridBagConstraints.HORIZONTAL,
                 3, 3, 1, 1);
 
-        lbDescricao = new JLabel(I18N.obterRotuloFilmeDescricao());
-        adicionarComponente(lbDescricao,
+        lbElenco = new JLabel(I18N.obterRotuloFilmeDescricao());
+        adicionarComponente(lbElenco,
                 GridBagConstraints.LINE_END,
                 GridBagConstraints.NONE,
                 4, 0, 1, 1);
 
-        taDescricao = new JTextArea(7, 25);
-        JScrollPane scrollPaneDescricao = new JScrollPane(taDescricao,
+        txtDesccricao = new JTextArea(7, 25);
+        JScrollPane scrollPaneDescricao = new JScrollPane(txtDesccricao,
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         adicionarComponente(scrollPaneDescricao,
                 GridBagConstraints.LINE_START,
                 GridBagConstraints.HORIZONTAL,
                 4, 1, 3, 1);
 
-        btnNovoFilme = new JButton(I18N.obterBotaoNovo(),
+        btnNovaFilme = new JButton(I18N.obterBotaoNovo(),
                 GerenciadorDeImagens.NOVO);
 
         btnEditarFilme = new JButton(I18N.obterBotaoEditar(),
@@ -288,7 +317,7 @@ public class TelaMeusFilmes {
         prepararComponentesEstadoInicial();
 
         JPanel painelBotoes = new JPanel();
-        painelBotoes.add(btnNovoFilme);
+        painelBotoes.add(btnNovaFilme);
         painelBotoes.add(btnEditarFilme);
         painelBotoes.add(btnSalvarFilme);
         painelBotoes.add(btnDeletarFilme);
@@ -301,16 +330,29 @@ public class TelaMeusFilmes {
     }
 
     /**
-     * Trata a selação de filmes na grade.
+     * Trata a selação de séries na grade.
      */
     private void selecionouFilme() {
+        
+
         // Dados "fake"
-        String texto = String.format("Linha selecionada: %d", tbFilmes.getSelectedRow());
-        txtNome.setText(texto);
-        txtGenero.setText(texto);
-        txtAno.setText(texto);
-        txtDuracao.setText(texto);
-        taDescricao.setText(texto);
+        
+        //String texto = String.format("Linha selecionada: %d", tbFilmes.getSelectedRow());
+        txtNome.setText(gerenciadorFilmes.getListaFilme().get(tbFilmes.getSelectedRow()).getNome());
+        txtDuracao.setText(gerenciadorFilmes.getListaFilme().get(tbFilmes.getSelectedRow()).getDescricao());
+        txtAno.setText(gerenciadorFilmes.getListaFilme().get(tbFilmes.getSelectedRow()).getAno());
+        txtGenero.setText(gerenciadorFilmes.getListaFilme().get(tbFilmes.getSelectedRow()).getGenero());
+        txtDesccricao.setText(gerenciadorFilmes.getListaFilme().get(tbFilmes.getSelectedRow()).getDuracao());
+        
+    }
+    
+        private Filme carregarFilme() {
+        return new Filme(txtNome.getText(),
+                txtGenero.getText(),
+                txtAno.getText(),
+                txtDuracao.getText(),
+                txtDesccricao.getText()
+                );
     }
 
     /**
@@ -335,6 +377,7 @@ public class TelaMeusFilmes {
         btnEditarFilme.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                
                 prepararComponentesEstadoEditouFilme();
             }
         });
@@ -342,14 +385,25 @@ public class TelaMeusFilmes {
         btnSalvarFilme.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                prepararComponentesEstadoInicial();
+                if(opsalve==1){
+                    gerenciadorFilmes.cadastrarFilme(carregarFilme());
+                    
+                }
+                if(opsalve==2){
+                    gerenciadorFilmes.editarFilme(carregarFilme(),tbFilmes.getSelectedRow());
+                    
+                }
+                janela.dispose();
+                inicializar();
+                
             }
         });
 
-        btnNovoFilme.addActionListener(new ActionListener() {
+        btnNovaFilme.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                prepararComponentesEstadoNovoFilme();
+                
+                prepararComponentesEstadoNovaFilme();
             }
         });
 
@@ -357,7 +411,9 @@ public class TelaMeusFilmes {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (Utilidades.msgConfirmacao(I18N.obterConfirmacaoDeletar())) {
-                    // Remover filme!
+                    gerenciadorFilmes.deletarFilme(carregarFilme(),tbFilmes.getSelectedRow());
+                janela.dispose();
+                inicializar();
                 }
             }
         });
